@@ -9,6 +9,8 @@
           <button 
             class="list-group-item list-group-item-action"
             *ngFor="let q of quizzes"
+            [class.active]="q === selectedQuiz"
+            (click)="selectQuiz(q)"
           >
             {{ q.quizName }}
           </button>
