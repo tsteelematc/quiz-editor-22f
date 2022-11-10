@@ -21,7 +21,10 @@
             >
               {{ q.quizName }}
             </span>
-            <small class="fst-italic fw-lighter text-nowrap">
+            <small 
+              class="fst-italic fw-lighter text-nowrap"
+              [class.text-danger]="q.quizQuestions.length === 0 && q !== selectedQuiz"
+            >
               {{ q.quizQuestions.length }} question<span *ngIf="q.quizQuestions.length !== 1">s</span>
             </small>
           </button>
@@ -54,6 +57,12 @@
       <div class="card mt-3">
         <div class="card-header">
           Questions
+          <span
+            class="text-danger"
+            *ngIf="selectedQuiz.quizQuestions.length === 0"
+          >
+            (no questions)
+          </span>
         </div>
         <div class="card-body">
           <button 
