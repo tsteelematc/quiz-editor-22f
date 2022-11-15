@@ -17,25 +17,11 @@ export class QuizService {
     private angularHttpSvc: HttpClient
   ) { }
 
-  loadQuizzes = (): QuizFromWeb[] => {
+  loadQuizzes = () => {
 
-    const quizzesFromWeb = [
-      {
-        name: 'Quiz 1'
-        , questions: [
-          {
-            name: 'Question 1'
-          }
-          , {
-            name: 'Question 2'
-          }
-        ]
-      }
-      , {
-        name: 'Quiz 2'
-        , questions: []
-      }
-    ];
+    const quizzesFromWeb = this.angularHttpSvc.get<QuizFromWeb[]>(
+      "https://modern-js.azurewebsites.net/api/HttpTriggerJS1?code=8XD3vN3ehHLdZacBQJQhgUnNst9202gdd5VM3kWCytDkz2nXhia6kA==&name=Mystery%20Quiz"
+    );
 
     return quizzesFromWeb;
   };
