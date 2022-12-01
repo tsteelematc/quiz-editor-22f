@@ -37,8 +37,15 @@
             *ngFor="let q of quizzes"
             [class.active]="q === selectedQuiz"
             (click)="selectQuiz(q)"
-            [style.text-decoration]="q.markedForDelete ? 'line-through' : 'inherit'"
           >
+            <span 
+              class="position-absolute top-50 start-100 translate-middle p-2 border border-light rounded-circle"
+              *ngIf="q.markedForDelete || q.newlyAdded || isQuizEdited(q)"
+              [class.bg-danger]="q.markedForDelete"
+              [class.bg-success]="q.newlyAdded"
+              [class.bg-secondary]="isQuizEdited(q)"
+            >
+            </span>
             <span
               class="text-truncate mr-5"
             >
@@ -46,7 +53,6 @@
             </span>
             <small 
               class="fst-italic fw-lighter text-nowrap"
-              [class.text-danger]="q.quizQuestions.length === 0 && q !== selectedQuiz"
             >
               {{ q.quizQuestions.length }} question<span *ngIf="q.quizQuestions.length !== 1">s</span>
             </small>

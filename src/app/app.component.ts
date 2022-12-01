@@ -198,9 +198,7 @@ export class AppComponent implements OnInit {
   };
 
   getEditedQuizzes = () => this.quizzes.filter(x => 
-    !x.newlyAdded
-    && !x.markedForDelete
-    && this.generateNaiveChecksum(x) != x.naiveChecksum
+    this.isQuizEdited(x)
   );
 
   get editedQuizCount() {
@@ -234,4 +232,10 @@ export class AppComponent implements OnInit {
     }
 
   };
+
+  isQuizEdited = (x: QuizDisplay) =>     
+    !x.newlyAdded
+    && !x.markedForDelete
+    && this.generateNaiveChecksum(x) != x.naiveChecksum
+  ;
 }
