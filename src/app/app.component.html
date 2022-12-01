@@ -39,7 +39,7 @@
             (click)="selectQuiz(q)"
           >
             <span 
-              class="position-absolute top-0 start-100 translate-middle p-2 border border-light rounded-circle"
+              class="position-absolute top-50 start-100 translate-middle p-2 border border-light rounded-circle"
               *ngIf="q.markedForDelete || q.newlyAdded || isQuizEdited(q)"
               [class.bg-danger]="q.markedForDelete"
               [class.bg-success]="q.newlyAdded"
