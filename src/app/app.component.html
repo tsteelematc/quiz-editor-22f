@@ -65,7 +65,10 @@
       [@detailsFromLeft]="detailsAnimationState"
       (@detailsFromLeft.done)="detailsAnimationDone()"
     >
-      <div class="mt-3">
+      <div 
+        class="mt-3"
+        [@pulseSaveCancelButtons]="deletedQuizCount + editedQuizCount + addedQuizCount > 0 ? 'somethingToSave' : 'nothingToSave'"
+      >
         <button 
           class="btn"
           [class.btn-outline-dark]="deletedQuizCount + editedQuizCount + addedQuizCount == 0"
